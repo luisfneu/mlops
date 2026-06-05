@@ -1,7 +1,6 @@
 name: mlops-lel
 
 services:
-  # -------- Backend store (Postgres) --------
   postgres:
     image: postgres:16-alpine
     container_name: mlops-postgres
@@ -20,7 +19,6 @@ services:
       timeout: 5s
       retries: 10
 
-  # -------- Artifact store (S3 compatível) --------
   minio:
     image: minio/minio:latest
     container_name: mlops-minio
@@ -58,7 +56,6 @@ services:
       echo 'bucket pronto: '$${BUCKET};
       "
 
-  # -------- MLflow Tracking Server --------
   mlflow:
     build:
       context: ./infra/mlflow
@@ -88,7 +85,6 @@ services:
       timeout: 5s
       retries: 15
 
-  # -------- Prefect server (orquestração) --------
   prefect:
     image: prefecthq/prefect:3-latest
     container_name: mlops-prefect
@@ -100,7 +96,6 @@ services:
     ports:
       - "4200:4200"
 
-  # -------- API de inferência (FastAPI) --------
   api:
     build:
       context: .
@@ -123,7 +118,6 @@ services:
     volumes:
       - ./reports:/app/reports
 
-  # -------- Prometheus (scrape de métricas da API) --------
   prometheus:
     image: prom/prometheus:latest
     container_name: mlops-prometheus
@@ -136,7 +130,6 @@ services:
     depends_on:
       - api
 
-  # -------- Grafana (dashboards) --------
   grafana:
     image: grafana/grafana:latest
     container_name: mlops-grafana
