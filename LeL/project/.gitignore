@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -11,35 +10,28 @@ env/
 *.egg-info/
 *.egg
 
-# uv
 .uv-cache/
 
-# Notebooks
 .ipynb_checkpoints/
 
-# Tests / coverage
 .pytest_cache/
 .coverage
 htmlcov/
 .mypy_cache/
 .ruff_cache/
 
-# IDE
 .vscode/
 .idea/
 *.swp
 
-# OS
 .DS_Store
 Thumbs.db
 
-# Data (mantemos .gitkeep em subpastas)
 data/raw/*
 data/processed/*
 data/reference/*
 !data/**/.gitkeep
 
-# Artefatos locais (MLflow, modelos)
 mlruns/
 mlartifacts/
 models_local/
@@ -48,13 +40,10 @@ reports/*.html
 reports/*.json
 !reports/.gitkeep
 
-# Logs
 *.log
 logs/
 
-# Secrets
 .env
 .env.local
 
-# Docker volumes
 .volumes/
